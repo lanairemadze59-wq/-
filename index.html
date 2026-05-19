@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevLearn — სრული ეკოსისტემა</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="content">
+        <nav>
+            <div class="nav-logo">dev<span>learn</span></div>
+            <div class="nav-links">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#forum">Forum</a>
+                <a href="#jobs">Jobs</a>
+                <a href="#roadmaps">Roadmaps</a>
+                <a href="#snippets">Snippets</a>
+                <a href="#tools">AI Tools</a>
+                <a href="#video-tutorials">კურსები</a>
+                <a href="#pricing">ფასები</a>
+            </div>
+            <button class="btn-primary" onclick="openRegister()">რეგისტრაცია</button>
+        </nav>
+
+        <header class="hero">
+            <h1>კოდი, <span class="gr1">AI ინსტრუმენტები</span><br>და <span class="gr2">კარიერა</span></h1>
+            <p style="color:var(--muted); margin: 30px 0;">საქართველოს უდიდესი დეველოპერული ეკოსისტემა.</p>
+        </header>
+
+        <section id="dashboard">
+            <h2 class="sec-title">ჩემი Dashboard</h2>
+            <div class="dash-grid">
+                <div class="stat-card"><span class="stat-num">12</span><p>ნახული კურსი</p></div>
+                <div class="stat-card"><span class="stat-num">45</span><p>შენახული Snippet</p></div>
+                <div class="stat-card"><span class="stat-num">3</span><p>აქტიური Roadmap</p></div>
+                <div class="stat-card"><span class="stat-num">85%</span><p>პროგრესი</p></div>
+            </div>
+        </section>
+
+        <section id="forum" class="forum-container">
+            <h2 class="sec-title">Networking & ფორუმი</h2>
+            
+            <div id="forum-posts-container">
+                <div class="forum-post">
+                    <h4 style="color:var(--blue)">როგორ დავიწყო მუშაობა უცხოურ კომპანიაში?</h4>
+                    <p style="font-size:14px; color:var(--muted); margin-top:5px;">ავტორი: გიორგი • 5 პასუხი</p>
+                </div>
+                <div class="forum-post">
+                    <h4 style="color:var(--blue)">React vs Next.js - რომელია უკეთესი 2026-ში?</h4>
+                    <p style="font-size:14px; color:var(--muted); margin-top:5px;">ავტორი: ნინო • 12 პასუხი</p>
+                </div>
+            </div>
+
+            <button class="btn-primary" id="toggle-forum-btn" onclick="toggleForumForm()" style="width:100%; margin-top:10px; background:var(--surface2); border:1px solid var(--border);">ახალი თემის გახსნა +</button>
+
+            <div id="new-topic-form" style="display:none; background:var(--surface); border:1px solid var(--border2); padding:20px; border-radius:15px; margin-top:15px;">
+                <h4 style="margin-bottom:15px; color:var(--text);">ახალი თემის დამატება</h4>
+                <input type="text" id="forum-title" placeholder="თემის სათაური (მაგ: რა არის ახალი ეკოსისტემაში?)" style="margin-bottom:12px;">
+                <input type="text" id="forum-author" placeholder="შენი სახელი" style="margin-bottom:15px;">
+                <div style="display:flex; gap:10px;">
+                    <button class="btn-primary" onclick="createNewTopic()" style="flex:1; background:linear-gradient(135deg, var(--blue), var(--cyan));">გამოქვეყნება</button>
+                    <button class="btn-primary" onclick="toggleForumForm()" style="background:var(--surface2); border:1px solid var(--border); color:var(--muted);">გაუქმება</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="jobs" style="max-width:1100px; margin:0 auto; padding:0 48px;">
+            <h2 class="sec-title">ვაკანსიები</h2>
+            <div class="card" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <div><h3>Senior React Developer</h3><p>TBC Bank • თბილისი</p></div>
+                <button class="btn-primary" style="background:var(--green)">Apply</button>
+            </div>
+        </section>
+
+        <section id="roadmaps">
+            <h2 class="sec-title">Roadmaps</h2>
+            <div class="grid-layout">
+                <div class="card"><h3>Frontend</h3><p style="font-size:14px; color:var(--muted)">HTML, CSS, JS, React</p></div>
+                <div class="card"><h3>Backend</h3><p style="font-size:14px; color:var(--muted)">Python, Node, SQL</p></div>
+            </div>
+        </section>
+
+        <section id="snippets" style="max-width:1000px; margin:0 auto; padding: 0 48px;">
+            <h2 class="sec-title" style="text-align:left">Snippet Search</h2>
+            <input type="text" id="snippetSearch" placeholder="მოძებნე კოდი..." onkeyup="filterSnippets()" style="padding:15px; font-size:16px; width:100%; background:var(--surface); color:white; border-radius:10px; border:1px solid var(--border2);">
+            <div class="card" style="margin-top:20px;" data-title="Flex Center">
+                <div style="display:flex; justify-content:space-between"><h4>Flex Center</h4><button onclick="copyCode(this)" style="color:var(--blue); background:none; border:none; cursor:pointer;">Copy</button></div>
+                <pre style="background:#000; padding:15px; border-radius:10px; margin-top:10px; font-size:13px; color:#d1d1d1;"><code>.center { display: flex; justify-content: center; }</code></pre>
+            </div>
+        </section>
+
+        <section id="tools">
+            <h2 class="sec-title">AI ინსტრუმენტები</h2>
+            <div class="grid-layout">
+                <div class="card"><h3>Claude</h3><span style="position:absolute; top:15px; right:15px; color:var(--green); font-size:10px; font-weight:800;">FREE</span></div>
+                <div class="card"><h3>Gemini</h3><span style="position:absolute; top:15px; right:15px; color:var(--violet); font-size:10px; font-weight:800;">PRO</span></div>
+                <div class="card"><h3>Arena</h3><span style="position:absolute; top:15px; right:15px; color:var(--violet); font-size:10px; font-weight:800;">PRO</span></div>
+                <div class="card"><h3>Grok</h3><span style="position:absolute; top:15px; right:15px; color:var(--amber); font-size:10px; font-weight:800;">PRO</span></div>
+                <div class="card"><h3>Leonardo AI</h3><span style="position:absolute; top:15px; right:15px; color:var(--violet); font-size:10px; font-weight:800;">PRO</span></div>
+                <div class="card"><h3>ChatGPT</h3><span style="position:absolute; top:15px; right:15px; color:var(--green); font-size:10px; font-weight:800;">FREE</span></div>
+                <div class="card"><h3>Midjourney</h3><span style="position:absolute; top:15px; right:15px; color:var(--amber); font-size:10px; font-weight:800;">PRO</span></div>
+                <div class="card"><h3>Perplexity</h3><span style="position:absolute; top:15px; right:15px; color:var(--cyan); font-size:10px; font-weight:800;">FREE</span></div>
+            </div>
+        </section>
+
+        <section id="video-tutorials" style="padding:60px 0; background:var(--surface2);">
+            <h2 class="sec-title">ვიდეო კურსები (13)</h2>
+            <div class="video-grid">
+                <a href="https://www.youtube.com/watch?v=uGEmIJkg4Cg" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/uGEmIJkg4Cg/hqdefault.jpg"><div class="play-btn">▶</div></div><div style="padding:15px"><h4>DevLearn - შესავალი</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=sGcrv8mR68E" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/sGcrv8mR68E/hqdefault.jpg"></div><div style="padding:15px"><h4>AI Overview</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=cj2ILTZEaLU" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/cj2ILTZEaLU/hqdefault.jpg"></div><div style="padding:15px"><h4>როგორ მუშაობს?</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=oqsnBY2FKr0" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/oqsnBY2FKr0/hqdefault.jpg"></div><div style="padding:15px"><h4>კონკურენტული კოდინგი</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=WEhfWRZOggk" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/WEhfWRZOggk/hqdefault.jpg"></div><div style="padding:15px"><h4>AI დეველოპერებისთვის</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=-VCHmq4Ixqw" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/-VCHmq4Ixqw/hqdefault.jpg"></div><div style="padding:15px"><h4>ვიდეო 6</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=GsUzR1jtrAc" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/GsUzR1jtrAc/hqdefault.jpg"></div><div style="padding:15px"><h4>ვიდეო 7</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=PD1lBJ-krjA" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/PD1lBJ-krjA/hqdefault.jpg"></div><div style="padding:15px"><h4>ვიდეო 8</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=E0S2WhsJc2w" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/E0S2WhsJc2w/hqdefault.jpg"></div><div style="padding:15px"><h4>ვიდეო 9</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=NFWl-ECZ41Y" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/NFWl-ECZ41Y/hqdefault.jpg"></div><div style="padding:15px"><h4>ვიდეო 10</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=TvNqq38egG4" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/TvNqq38egG4/hqdefault.jpg"></div><div style="padding:15px"><h4>ვიდეო 11</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=japEUOj2PlQ" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/japEUOj2PlQ/hqdefault.jpg"></div><div style="padding:15px"><h4>ვიდეო 12</h4></div></a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-card"><div class="thumbnail"><img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"></div><div style="padding:15px"><h4>ბონუს კურსი</h4></div></a>
+            </div>
+        </section>
+
+        <section id="pricing">
+            <h2 class="sec-title">ფასები</h2>
+            <div style="display:flex; justify-content:center; gap:30px; padding-bottom:60px;">
+                <div class="card" style="width:300px; text-align:center;"><h3>Starter</h3><h2 style="margin:15px 0;">₾0</h2><button class="btn-primary" style="width:100%; background:var(--surface2);" onclick="openRegister()">დაიწყე</button></div>
+                <div class="card" style="width:300px; text-align:center; border-color:var(--blue);"><h3>Pro</h3><h2 style="margin:15px 0;">₾29</h2><button class="btn-primary" style="width:100%;" onclick="openRegister()">გახდი პრო</button></div>
+            </div>
+        </section>
+
+        <footer style="padding:40px; text-align:center; border-top:1px solid var(--border); color:var(--muted); font-size:14px;">© 2026 DevLearn Platform</footer>
+    </div>
+
+    <div id="register-modal" class="modal-overlay" onclick="handleOverlayClick(event)">
+        <div class="modal-card" style="width:95%; max-width:500px; border-radius:24px; padding:48px; border:1px solid rgba(255,255,255,0.13); position:relative;">
+            <button onclick="closeModal('register-modal')" style="position:absolute; top:20px; right:20px; background:none; border:none; color:var(--muted); cursor:pointer; font-size:20px; line-height:1;">✕</button>
+
+            <div style="text-align:center; font-size:24px; font-weight:800; margin-bottom:6px;">dev<span style="color:var(--cyan)">learn</span></div>
+            <p style="text-align:center; color:var(--muted); font-size:13px; margin-bottom:32px;">შექმენი შენი ანგარიში — სრულიად უფასოდ</p>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <div>
+                    <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:7px;">სახელი</label>
+                    <input type="text" id="reg-name" placeholder="გიორგი">
+                </div>
+                <div>
+                    <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:7px;">გვარი</label>
+                    <input type="text" id="reg-lastname" placeholder="ბერიძე">
+                </div>
+            </div>
+
+            <div style="margin-top:16px;">
+                <label style="display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:7px;">რეგისტრაციის კოდი</label>
+                <input type="text" id="reg-code" placeholder="REG-XXXX-XXXX">
+            </div>
+
+            <button class="btn-primary" style="width:100%; margin-top:8px; padding:15px; background:linear-gradient(135deg, var(--blue), var(--cyan)); border-radius:12px; font-size:15px; font-weight:700;" onclick="registerUser()">რეგისტრაცია →</button>
+
+            <div id="modal-success" style="display:none; text-align:center; padding:14px; background:rgba(61,214,140,0.1); border:1px solid var(--green); border-radius:12px; color:var(--green); font-weight:600; margin-top:14px;"></div>
+        </div>
+    </div>
+
+    <script>
+        // რეგისტრაციის ფუნქციები
+        function openRegister() {
+            document.getElementById('register-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            document.getElementById('reg-name').value = "გიორგი";
+            document.getElementById('reg-lastname').value = "ბერიძე";
+            document.getElementById('reg-code').value = "REG-2026-X98B";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleOverlayClick(e) {
+            if (e.target.id === 'register-modal') {
+                closeModal('register-modal');
+            }
+        }
+
+        function registerUser() {
+            const name = document.getElementById('reg-name').value.trim();
+            const lastname = document.getElementById('reg-lastname').value.trim();
+            const code = document.getElementById('reg-code').value.trim();
+
+            if (!name || !lastname || !code) {
+                alert('გთხოვ შეავსო ყველა ველი!');
+                return;
+            }
+
+            const msg = document.getElementById('modal-success');
+            msg.style.display = 'block';
+            msg.textContent = '✅ წარმატებულია! კეთილი იყოს შენი მობრძანება, ' + name + '!';
+
+            setTimeout(() => closeModal('register-modal'), 2500);
+        }
+
+        // --- ფორუმის ახალი ფუნქციონალი ---
+        function toggleForumForm() {
+            const form = document.getElementById('new-topic-form');
+            const toggleBtn = document.getElementById('toggle-forum-btn');
+            
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+                toggleBtn.style.display = 'none'; // ვმალავთ დიდ ღილაკს, სანამ ფორმა ღიაა
+            } else {
+                form.style.display = 'none';
+                toggleBtn.style.display = 'block';
+                // ველების გასუფთავება
+                document.getElementById('forum-title').value = '';
+                document.getElementById('forum-author').value = '';
+            }
+        }
+
+        function createTopicCard(title, author) {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'forum-post';
+            // ახალ პოსტებს განსხვავებისთვის ლურჯი მარცხენა ხაზი ექნებათ (border-left)
+            postDiv.style.borderLeft = '4px solid var(--blue)'; 
+            
+            postDiv.innerHTML = `
+                <h4 style="color:var(--blue)">${title}</h4>
+                <p style="font-size:14px; color:var(--muted); margin-top:5px;">ავტორი: ${author} • 0 პასუხი</p>
+            `;
+            return postDiv;
+        }
+
+        function createNewTopic() {
+            const title = document.getElementById('forum-title').value.trim();
+            const author = document.getElementById('forum-author').value.trim();
+
+            if (!title || !author) {
+                alert('გთხოვთ, შეავსოთ თემის სათაური და თქვენი სახელი!');
+                return;
+            }
+
+            const container = document.getElementById('forum-posts-container');
+            const newPost = createTopicCard(title, author);
+
+            // ახალი თემა ემატება სიის დასაწყისში (ზემოდან)
+            container.insertBefore(newPost, container.firstChild);
+
+            // ფორმის დახურვა და გასუფთავება
+            toggleForumForm();
+        }
+
+        // სნიპეტების კოპირება და ფილტრი
+        function copyCode(btn) {
+            navigator.clipboard.writeText(btn.parentElement.nextElementSibling.innerText);
+            btn.innerText = "Copied!";
+            setTimeout(() => btn.innerText = "Copy", 2000);
+        }
+
+        function filterSnippets() {
+            let q = document.getElementById('snippetSearch').value.toLowerCase();
+            let cards = document.querySelectorAll('[data-title]');
+            cards.forEach(card => {
+                card.style.display = card.dataset.title.toLowerCase().includes(q) ? "block" : "none";
+            });
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal('register-modal');
+        });
+    </script>
+</body>
+</html>
